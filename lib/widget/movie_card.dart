@@ -61,7 +61,7 @@ class MovieTitle extends StatelessWidget {
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
       ),
       child: Text(
-        movie.title,
+        movie.name,
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,

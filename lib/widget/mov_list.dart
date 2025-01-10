@@ -34,7 +34,7 @@ class _MovieListState extends State<MovieList> {
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 8.0,
+              crossAxisSpacing: 6.0,
               mainAxisSpacing: 8.0,
               childAspectRatio:
                   0.7, // Adjust aspect ratio to better fit the image and text
@@ -43,7 +43,7 @@ class _MovieListState extends State<MovieList> {
             itemBuilder: (context, index) {
               final movie = snapshot.data![index];
               return MovCard(
-                title: movie.title,
+                title: movie.name,
                 imagePath: movie.imageUrl ?? '',
                 movie: movie,
               );

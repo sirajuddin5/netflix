@@ -35,6 +35,7 @@ class _CarouselSliderCardState extends State<CarouselSliderCard> {
 
   @override
   Widget build(BuildContext context) {
+
     return FutureBuilder<List<Movie>>(
       future: _movies,
       builder: (context, snapshot) {
@@ -49,6 +50,7 @@ class _CarouselSliderCardState extends State<CarouselSliderCard> {
         if (snapshot.hasData) {
           List<Movie> movies = snapshot.data!;
 
+
           return Column(
             children: [
               SizedBox(
@@ -58,6 +60,8 @@ class _CarouselSliderCardState extends State<CarouselSliderCard> {
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
                     final movie = movies[index];
+                    print('============================');
+                    print(movie.url);
                     return GestureDetector(
                       onTap: () => navigateToDetailsView(context, movie),
                       child: Stack(
@@ -65,7 +69,8 @@ class _CarouselSliderCardState extends State<CarouselSliderCard> {
                           SliderCardImage(
                             imageUrl: movie.imageUrl,
                           ),
-                          _buildCarouselOverlay(movie.title),
+
+                          _buildCarouselOverlay(movie.name),
                         ],
                       ),
                     );

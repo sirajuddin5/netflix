@@ -70,16 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 10),
 
                   CarouselSliderCard(),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Text(
-                      "Popular Movies",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700,
-                      ),
+                  SizedBox(height: 40),
+                  Text(
+                    "Popular Movies",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   // SizedBox(height: 20),

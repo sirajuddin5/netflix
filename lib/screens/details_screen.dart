@@ -16,6 +16,7 @@ class DetailsScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
@@ -29,11 +30,10 @@ class DetailsScreen extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height:
-                    screenHeight * 0.45, // Covers 45% of the screen height
+                    height: screenHeight * 0.45, // Covers 45% of the screen height
                     width: double.infinity,
                     child: movie.imageUrl != null
-                        ? Image.network(movie.imageUrl!, fit: BoxFit.cover)
+                        ? Image.network(movie.imageUrl, fit: BoxFit.cover)
                         : Image.asset('assets/img.png', fit: BoxFit.cover),
                   ),
                   Positioned(
@@ -57,11 +57,11 @@ class DetailsScreen extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 20),
                         child: Text(
-                          movie.title,
+                          movie.name,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 26,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -70,11 +70,73 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              // Movie Details Section
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Genre, Language, and Runtime
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            movie.language,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '${movie.runtime} min',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            movie.genres.isNotEmpty ? movie.genres.join(', ') : 'No Genres',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    // Premiere Date
+                    Text(
+                      "Premiered: ${movie.premiered}",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    // Movie Description
                     Text(
                       "Story",
                       textAlign: TextAlign.left,
@@ -85,15 +147,15 @@ class DetailsScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10),
-                    // Movie Description
                     Text(
-                      parseHtmlString(movie.description),
+                      parseHtmlString(movie.summary),
                       style: TextStyle(
                         color: Colors.white70,
                         fontSize: 16,
                         height: 1.5,
                       ),
                     ),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),
